@@ -21,6 +21,9 @@ draft <- read.csv('data-raw/draft.csv') %>% drop_na()
 draft_combine <- read.csv('data-raw/draft_combine.csv') %>%
   select(c(1,2,5,6,7,9,10,12,14:20)) %>% drop_na()
 player_info <- merge(draft, draft_combine)
+player_info$slugPosition <- as.factor(player_info$slugPosition)
+player_info$yearDraft <- as.factor(player_info$yearDraft)
+player_info$yearCombine <- as.factor(player_info$yearCombine)
 player_attributes <- read.csv('data-raw/player_attributes.csv') %>%
   select(c(1,4,9,10,12:14,19:21,23,25,26,30:36)) %>% drop_na()
 colnames(player_attributes) <- c("idPlayer", "namePlayer", "school", "country",
@@ -29,7 +32,7 @@ colnames(player_attributes) <- c("idPlayer", "namePlayer", "school", "country",
                                  "fromYear", "toYear", "yearDraft", "numberRound",
                                  "numberPickOverall", "ptsAvg", "astAvg",
                                  "rebAvg", "allStarApp")
-player_info_a <- merge(draft, player_attributes)
+#player_info_a <- merge(draft, player_attributes, all=TRUE)
 
 #Don't need
 player <- read.csv('data-raw/player.csv') %>%
@@ -44,4 +47,4 @@ team_salary <- read.csv('data-raw/team_salary.csv') %>%
   select(c(1:3)) %>% drop_na()
 team <- read.csv('data-raw/team.csv') %>% drop_na()
 
-usethis::use_data(player_info)
+usethis::use_data(player_info, overwrite = TRUE)
