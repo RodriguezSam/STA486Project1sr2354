@@ -19,7 +19,7 @@ while (index <= 31)
   a <- html_elements(session, "a")[[link_index]] %>% html_attr("href")
   new_session <- html_session(a)
   table <- html_nodes(new_session, "table")
-  table <- table[[1]] %>% html_table #%>% select(c(2,3))
+  table <- table[[1]] %>% html_table %>% select(c(2,3))
   table <- row_to_names(table)
 
   ifelse(is.null(Player.Payroll),
