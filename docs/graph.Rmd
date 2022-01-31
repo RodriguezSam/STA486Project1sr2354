@@ -1,0 +1,35 @@
+---
+title: "Basketball Plots"
+author: "Samantha Rodriguez"
+date: "1/26/2022"
+output: pdf_document
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(devtools)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(STA486Project1sr2354)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+ggplot(player_info, aes(x=slugPosition, y=heightWOShoesInches)) + geom_boxplot() +
+  ggtitle("Heights of Different Basketball Positions") +
+  labs(x = "Position", y = "Height (inches)", 
+       caption = "Height of basketball players of different positions over the years of 1947 and 2020. If a player played multiple 
+       positions they are in a group together and not put in each seperate group.") +
+  theme(plot.caption = element_text(hjust=0, face="italic"))
+```
+\newpage
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+ggplot(player_info, aes(x=slugPosition, y=weightLBS)) + geom_boxplot() +
+  labs(title = "Weight of players in different poistions", 
+       x = "Position", y = "Weight (lbs)", 
+       caption = "Weight of players in different poistions in the NBA from the year of 1947 to 2020. If a player played in two 
+       different poisitons they are in a seperate group and not put in two seperate groups at the same time.") +
+  theme(plot.caption = element_text(hjust=0, face="italic"))
+```
+
+
