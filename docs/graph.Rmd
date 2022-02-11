@@ -70,7 +70,7 @@ they are put into their own category.
 
 \newpage
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 levels(player_info$yearDraft) <- c("1987", "2004", "2005", "2006", "2007", "2008",
                                    "2009", "2010", "2011", "2012", "2013", "2015",
                                    "2017", "2018", "2019", "2020")
